@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  postgres:
+    image: docker.io/postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - ./database_postgres/data/postgres:/var/lib/postgresql/data
+      - ./database_postgres/scripts/create.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  redis:
+    image: docker.io/redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - '${REDIS_PORT}:${REDIS_PORT}'
+    volumes:
+      - ./database_redis:/data
+
+  # api:
+  #   build: .
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   environment:
+  #     DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
+  #     REDIS_URL: redis://redis:${REDIS_PORT}
+  #   ports:
+  #     - "3000:3000"
