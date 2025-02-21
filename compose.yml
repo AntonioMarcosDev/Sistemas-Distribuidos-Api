@@ -23,19 +23,15 @@ services:
     volumes:
       - ./database_redis:/data
 
-  # api:
-  #   build:
-  #     context: .
-  #     dockerfile: containerfile
-  #   container_name: sistemas-distribuidos-api
-  #   restart: always
-  #   depends_on:
-  #     - postgres
-  #     - redis
-  #   app:
-  #   build:
-  #   environment:
-  #     DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
-  #     REDIS_URL: redis://redis:${REDIS_PORT}
-  #   ports:
-  #     - "8080:3000"
+  app:
+    build: .
+    container_name: sistemas-distribuidos
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
+      REDIS_URL: redis://redis:${REDIS_PORT}
+    ports:
+      - "8080:8080"
+      - "5555:5555"
