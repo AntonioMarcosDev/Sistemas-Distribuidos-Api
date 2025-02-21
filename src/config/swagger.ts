@@ -6,7 +6,7 @@ const options = {
     info: {
       title: 'Message API',
       version: '1.0.0',
-      description: 'API for asynchronous message processing',
+      description: 'API para processamento assíncrono de mensagens',
     },
   },
   apis: ['./src/routes/*.ts'],

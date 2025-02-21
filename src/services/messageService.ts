@@ -8,7 +8,7 @@ export const addMessage = async (content: string) => {
         await messageQueue.add('newMessage', { content });
         return content;
     } catch (error) {
-        throw new Error('Error adding message: ' + error);
+        throw new Error('Erro ao adicionar mensagem: ' + error);
     }
 };
 
@@ -17,6 +17,6 @@ export const getAllMessages = async () => {
         const messages = await prisma.message.findMany();
         return messages;
     } catch (error) {
-        throw new Error('Error retrieving messages: ' + error);
+        throw new Error('Erro ao receber mensagens: ' + error);
     }
 };

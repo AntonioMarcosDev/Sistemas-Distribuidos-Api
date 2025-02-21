@@ -2,29 +2,27 @@ import { Worker } from 'bullmq';
 import prismaClient from '../database/prisma';
 import redisClient from '../database/redis';
 
-console.log('Worker started');
-
 const worker = new Worker(
-    'messageQueue',
+    'messages',
     async (job) => {
         if (job.name === "newMessage") {
             await prismaClient.message.create({
                 data: job.data
             });
         }
-        console.log('Processing message:', job.data.content);
+        console.log('Processando mensagem:', job.data.content);
     },
     { connection: redisClient }
 );
 
 worker.on('completed', (job) => {
-    console.log(`Job ${job.id} completed`);
+    console.log(`Tarefa ${job.id} completa`);
 });
 
 worker.on('failed', (job, err) => {
-    console.error(`Job ${job?.id} failed:`, err);
+    console.error(`Tarefa ${job?.id} falhou:`, err);
 });
 
 worker.on('error', (err) => {
-    console.error('Worker error:', err);
+    console.error('Erro no Worker:', err);
 });
