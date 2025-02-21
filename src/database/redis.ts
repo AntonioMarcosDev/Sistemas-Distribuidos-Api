@@ -1,7 +1,8 @@
 import Redis from "ioredis";
+import { config } from "../config/config";
 
 //Conectando ao redis
-const redisClient = new Redis(process.env.REDIS_URL || "redis://localhost:6379", {
+const redisClient = new Redis(config.redis_url, {
     maxRetriesPerRequest: null,
 });
 

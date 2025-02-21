@@ -6,9 +6,9 @@ import { specs } from './config/swagger';
 
 const routes = Router();
 
-routes.use('/message', messageRoutes);
+routes.use("/message", messageRoutes);
 routes.use("/admin/queues", serverAdapter.getRouter());
-routes.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
+routes.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 export default routes;
 

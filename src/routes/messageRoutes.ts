@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sendMessage } from '../controllers/messageController';
+import { sendMessage, getMessages } from '../controllers/messageController';
 
 const router = Router();
 
@@ -25,6 +25,19 @@ const router = Router();
  *       500:
  *         description: Erro interno do servidor
  */
-router.post("/message", sendMessage);
+router.post("/", sendMessage);
+/**
+ * @swagger
+ * /message:
+ *   get:
+ *     summary: Obtém uma mensagem
+ *     description: Recupera uma mensagem do banco de dados.
+ *     responses:
+ *       200:
+ *         description: Mensagem recuperada com sucesso
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get("/", getMessages);
 
 export default router;
