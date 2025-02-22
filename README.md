@@ -61,7 +61,7 @@ Este projeto é uma API desenvolvida em TypeScript para gerenciamento de filas u
 
 A documentação da API pode ser acessada através do Swagger na seguinte URL:
 ```
-http://localhost:3000/docs
+http://localhost:8080/docs
 ```
 
 ## Contribuição
