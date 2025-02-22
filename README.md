@@ -14,6 +14,44 @@ Este projeto é uma API desenvolvida em TypeScript para gerenciamento de filas u
 - **Containers**: Utilizados para orquestrar a aplicação.
 - **Prisma**: ORM utilizado para interagir com o banco de dados.
 
+## Estrutura do Projeto
+
+A estrutura de diretórios e arquivos do projeto é organizada da seguinte forma:
+
+```
+/Sistemas-Distribuidos-Api/
+├── src/
+│   ├── config/
+│   │   └── config.ts
+│   │   └── swagger.ts     
+│   ├── controllers/
+│   │   └── messageController.ts
+│   ├── database/
+│   │   └── prisma.ts
+│   │   └── redis.ts
+│   ├── jobs/
+│   │   └── processMessage.ts
+│   ├── queues/
+│   │   └── messageQueue.ts
+│   │   └── queueMonitor.ts
+│   ├── routes/
+│   │   └── messageRoutes.ts
+│   ├── services/
+│   │   └── messageService.ts
+│   ├── app.ts
+│   ├── routes.ts
+│   └── server.ts
+├── prisma/
+│   └── schema.prisma
+├── .env
+├── .env.example
+├── docker-compose.yml
+├── containerfile
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
 ## Instalação
 
 1. Clone o repositório:
